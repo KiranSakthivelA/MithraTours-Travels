@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="Assets/KPS_Icon_PNG.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTT Tours & Travels | Premium Cab Services South India</title>
+    <meta name="description"
+        content="Book MTT Tours & Travels Service All Over Tamilnadu, Kerala, Karnataka, Andhra and Telangana. One way, round trip, airport transfers, and tour packages.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script defer src="fontawesome/js/all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/brand.css?v=42">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjVfB0v9WlUtOzuifbE1LztOoWqrzyeJg&libraries=places,geometry&callback=Function.prototype" async></script>
+</head>
+
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-text-brand">
+                    <span class="logo-text-main">MTT</span>
+                    <span class="logo-text-sub">Tours & Travels</span>
+                </span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="our-fleet.html">Our Fleet</a>
+                <a href="routes.html">Routes</a>
+                <a href="services.html">Services</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="index.html#home" class="btn-primary nav-btn">Book Now</a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="animate-up">Travel Smarter.<br>Arrive <span class="highlight">Happier.</span></h1>
+                <p class="animate-up delay-1">Mithra Tours &amp; Travels brings you <span class="highlight-alt">safe, comfortable &amp; transparent</span> outstation cab service across Tamil Nadu, Kerala, Karnataka, Andhra Pradesh and Telangana — anytime, any distance.
+                </p>
+                <div class="hero-actions animate-up delay-2">
+                    <a href="#home" class="btn-primary" style="min-width:170px;"><i class="fa-solid fa-calculator"></i> Get Free Estimate</a>
+                    <a href="tel:+919442173548" class="btn-secondary" style="min-width:170px; border-color:rgba(255,255,255,0.4);"><i class="fa-solid fa-phone"></i> +91 94421 73548</a>
+                </div>
+            </div>
+            <!-- Quick Quote Booking Form -->
+            <div class="hero-form-wrapper animate-in-right">
+                <div class="hero-form hero-booking-container">
+                    <h3 class="hero-form-title"><i class="fa-solid fa-bolt" style="color:#FFD700;"></i> Quick Estimate</h3>
+
+                    <!-- Trip Toggle -->
+                    <div style="margin-bottom:1.2rem; display:flex; justify-content:center;">
+                        <div class="trip-toggle">
+                            <input type="radio" name="qb-trip-type" id="qb-one-way-hero" value="One Way" checked>
+                            <label for="qb-one-way-hero">One Way</label>
+                            <input type="radio" name="qb-trip-type" id="qb-round-trip-hero" value="Round Trip">
+                            <label for="qb-round-trip-hero">Round Trip</label>
+                        </div>
+                    </div>
+
+                    <!-- Name & Phone -->
+                    <div class="form-row" style="margin-bottom:0.85rem;">
+                        <div class="field-container">
+                            <label class="qb-label">Full Name</label>
+                            <input type="text" id="qb-name" class="booking-field-input" placeholder="E.g. John Doe" required>
+                        </div>
+                        <div class="field-container">
+                            <label class="qb-label">Mobile Number</label>
+                            <input type="tel" id="qb-phone" class="booking-field-input" placeholder="10-digit number" required>
+                        </div>
+                    </div>
+
+                    <!-- Date & Time -->
+                    <div class="form-row" style="margin-bottom:0.85rem;">
+                        <div class="field-container">
+                            <label class="qb-label">Travel Date</label>
+                            <input type="date" id="qb-date" class="booking-field-input" required>
+                        </div>
+                        <div class="field-container">
+                            <label class="qb-label">Pick Up Time</label>
+                            <input type="time" id="qb-time" class="booking-field-input" required>
+                        </div>
+                    </div>
+
+                    <!-- Days (Round Trip only) -->
+                    <div id="qb-end-date-group" style="display:none; margin-bottom:0.85rem;">
+                        <div class="field-container" style="position:relative;">
+                            <label class="qb-label">No. of Days</label>
+                            <input type="number" id="qb-days" class="booking-field-input" min="1" max="30" value="1" placeholder="Number of days" style="padding-right:3rem;">
+                            <span style="position:absolute;right:0.9rem;bottom:0.75rem;font-size:0.75rem;color:#92400E;pointer-events:none;font-weight:600;">days</span>
+                        </div>
+                    </div>
+
+                    <!-- Pickup -->
+                    <div class="field-container" style="margin-bottom:0.3rem;">
+                        <label class="qb-label">Pick Up Location</label>
+                        <div style="position:relative;">
+                            <input type="text" id="qb-pickup" class="booking-field-input" placeholder="Origin City" required style="padding-right:2.2rem;">
+                            <i class="fa-solid fa-xmark" id="clear-pickup" style="position:absolute;right:0.8rem;top:50%;transform:translateY(-50%);color:#9CA3AF;cursor:pointer;font-size:0.85rem;transition:color 0.2s;" onmouseover="this.style.color='#111827'" onmouseout="this.style.color='#9CA3AF'" title="Clear"></i>
+                        </div>
+                    </div>
+
+                    <!-- Swap Icon -->
+                    <div style="display:flex;justify-content:center;align-items:center;padding:0.25rem 0;">
+                        <i class="fa-solid fa-right-left" id="qb-swap-btn" style="color:rgba(255,255,255,0.6);font-size:1rem;cursor:pointer;padding:0.4rem;transition:all 0.2s;" onmouseover="this.style.color='#FFD700';this.style.transform='scale(1.15)'" onmouseout="this.style.color='rgba(255,255,255,0.6)';this.style.transform='scale(1)'" title="Swap Locations"></i>
+                    </div>
+
+                    <!-- Drop -->
+                    <div class="field-container" style="margin-bottom:1rem;">
+                        <label class="qb-label">Drop Location</label>
+                        <div style="position:relative;">
+                            <input type="text" id="qb-drop" class="booking-field-input" placeholder="Destination City" required style="padding-right:2.2rem;">
+                            <i class="fa-solid fa-xmark" id="clear-drop" style="position:absolute;right:0.8rem;top:50%;transform:translateY(-50%);color:#9CA3AF;cursor:pointer;font-size:0.85rem;transition:color 0.2s;" onmouseover="this.style.color='#111827'" onmouseout="this.style.color='#9CA3AF'" title="Clear"></i>
+                        </div>
+                    </div>
+
+                    <!-- Error -->
+                    <div id="qb-error" style="color:#DC2626;font-size:0.82rem;margin-bottom:0.6rem;display:none;text-align:center;"></div>
+
+                    <!-- Hidden compat elements -->
+                    <div style="display:none;">
+                        <select id="qb-car"><option value="Sedan">Sedan</option></select>
+                        <div id="qb-days-group"></div>
+                        <div id="qb-estimate-box"><span id="qb-distance"></span><span id="qb-fare"></span></div>
+                        <button id="qb-btn-confirm"></button>
+                    </div>
+
+                    <!-- Estimate Button -->
+                    <button type="button" id="qb-btn-estimate" class="btn-primary full-width" style="font-size:1rem;padding:0.85rem;margin-top:0.2rem;">
+                        <i class="fa-solid fa-calculator"></i> Get Estimate
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= FARE COMPARISON MODAL ======= -->
+    <div id="fare-modal" style="display:none; position:fixed; inset:0; background:rgba(26,10,0,0.8); backdrop-filter:blur(10px); z-index:9999; overflow-y:auto; padding:1rem;">
+        <div class="fm-modal-body" style="max-width:900px; margin:2rem auto; background:#fff; border-radius:24px; box-shadow:0 30px 80px rgba(0,0,0,0.3); overflow:hidden; animation:fadeUp 0.4s cubic-bezier(0.34,1.56,0.64,1);">
+
+            <!-- Modal Header -->
+            <div style="background:linear-gradient(135deg,#92400E,#D97706,#F59E0B); padding:1.6rem 2rem; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <h2 style="color:#fff; font-size:1.4rem; margin:0; font-weight:800;">Available Vehicles</h2>
+                    <p id="fm-route-label" style="color:rgba(255,255,255,0.85); margin:0.35rem 0 0; font-size:0.9rem; font-weight:500;"></p>
+                </div>
+                <button onclick="closeFareModal()" style="background:rgba(255,255,255,0.2); border:2px solid rgba(255,255,255,0.3); color:#fff; width:38px; height:38px; border-radius:50%; font-size:1.2rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.35)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">✕</button>
+            </div>
+
+            <!-- Info Bar -->
+            <div style="background:#F9FAFB; border-bottom:1px solid #F3F4F6; padding:0.8rem 2rem; display:flex; gap:2rem; flex-wrap:wrap; align-items:center;">
+                <span style="font-size:0.88rem; color:#374151;"><i class="fa-solid fa-road" style="color:#FFC107; margin-right:5px;"></i>Distance: <strong id="fm-distance">—</strong></span>
+                <span style="font-size:0.88rem; color:#374151;"><i class="fa-solid fa-clock" style="color:#FFC107; margin-right:5px;"></i>Duration: <strong id="fm-duration">—</strong></span>
+                <span style="font-size:0.88rem; color:#374151;"><i class="fa-solid fa-arrows-left-right" style="color:#FFC107; margin-right:5px;"></i>Trip: <strong id="fm-trip-type">One Way</strong></span>
+                <span style="font-size:0.73rem; color:#6B7280; margin-left:auto;"><i class="fa-solid fa-circle-info"></i> Inclusive of driver allowance</span>
+            </div>
+
+            <!-- Vehicle Cards -->
+            <div id="fm-cards" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.4rem; padding:1.6rem 2rem 2rem;"></div>
+
+            <!-- Disclaimer -->
+            <div style="padding:0 2rem 1.4rem; text-align:center;">
+                <p style="font-size:0.78rem; color:#92400E; margin:0;">* Tolls, parking &amp; hill charges extra. Night charges (10 PM – 6 AM) may apply. Actual fare may vary.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fleet Section -->
+    <section id="fleet" class="fleet">
+        <div class="section-header reveal">
+            <h2>Choose Your Ride</h2>
+            <div class="header-line"></div>
+            <p>Well-maintained, clean vehicles for every budget</p>
+        </div>
+        <div class="fleet-grid">
+            <!-- Sedan -->
+            <div class="fleet-card reveal">
+                <div class="fleet-image type-sedan" style="position:relative; overflow:hidden; padding:0; height:180px;">
+                    <img src="Assets/car_sedan.png" alt="Sedan" style="width:100%; height:100%; object-fit:cover; object-position:center;" onerror="this.parentElement.innerHTML='<i class=&quot;fa-solid fa-car&quot; style=&quot;font-size:3.5rem; color:rgba(255,255,255,0.6);&quot;></i>'">
+                    <div style="position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.25) 0%,transparent 65%);"></div>
+                </div>
+                <div class="fleet-info">
+                    <h3>Sedan</h3>
+                    <p>Perfect for small families and business trips. Economical and comfortable.</p>
+                    <div class="pricing-list">
+                        <div class="pricing-row"><span>Base Charge (One Way)</span><strong>₹15 / km</strong></div>
+                        <div class="pricing-row"><span>Round Trip Rate</span><strong>₹14 / km</strong></div>
+                        <div class="pricing-row"><span>One Way Minimum</span><strong>130 Km</strong></div>
+                        <div class="pricing-row"><span>Round Trip Minimum</span><strong>250 Km</strong></div>
+                        <div class="pricing-row"><span>Driver Allowance</span><strong>₹400</strong></div>
+                    </div>
+                    <div class="fleet-specs" style="margin-bottom:15px;">
+                        <span><i class="fa-solid fa-user"></i> 4 Seats</span>
+                        <span><i class="fa-solid fa-suitcase"></i> 2 Bags</span>
+                    </div>
+                    <div class="fleet-actions">
+                        <a href="#contact" onclick="document.getElementById('mb-car').value='Sedan'; setTimeout(()=>{document.getElementById('contact').scrollIntoView({behavior:'smooth',block:'start'})},50); return true;" class="btn-primary full-width book-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- SUV -->
+            <div class="fleet-card reveal delay-1">
+                <div class="fleet-image type-suv" style="position:relative; overflow:hidden; padding:0; height:180px;">
+                    <img src="Assets/car_suv.png" alt="SUV" style="width:100%; height:100%; object-fit:cover; object-position:center;" onerror="this.parentElement.innerHTML='<i class=&quot;fa-solid fa-truck-pickup&quot; style=&quot;font-size:3.5rem; color:rgba(255,255,255,0.6);&quot;></i>'">
+                    <div style="position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.25) 0%,transparent 65%);"></div>
+                </div>
+                <div class="fleet-info">
+                    <h3>SUV</h3>
+                    <p>Ideal for family trips and groups. Spacious with extra luggage capacity.</p>
+                    <div class="pricing-list">
+                        <div class="pricing-row"><span>Base Charge (One Way)</span><strong>₹20 / km</strong></div>
+                        <div class="pricing-row"><span>Round Trip Rate</span><strong>₹19 / km</strong></div>
+                        <div class="pricing-row"><span>One Way Minimum</span><strong>130 Km</strong></div>
+                        <div class="pricing-row"><span>Round Trip Minimum</span><strong>250 Km</strong></div>
+                        <div class="pricing-row"><span>Driver Allowance</span><strong>₹400</strong></div>
+                    </div>
+                    <div class="fleet-specs" style="margin-bottom:15px;">
+                        <span><i class="fa-solid fa-user"></i> 7 Seats</span>
+                        <span><i class="fa-solid fa-suitcase"></i> 4 Bags</span>
+                    </div>
+                    <div class="fleet-actions">
+                        <a href="#contact" onclick="document.getElementById('mb-car').value='SUV'; setTimeout(()=>{document.getElementById('contact').scrollIntoView({behavior:'smooth',block:'start'})},50); return true;" class="btn-primary full-width book-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Innova Crysta -->
+            <div class="fleet-card reveal delay-2">
+                <div class="fleet-image type-innova type-muv" style="position:relative; overflow:hidden; padding:0; height:180px;">
+                    <img src="Assets/car_innova.png" alt="Innova Crysta" style="width:100%; height:100%; object-fit:cover; object-position:center; transform:scaleX(-1);" onerror="this.parentElement.innerHTML='<i class=&quot;fa-solid fa-shuttle-van&quot; style=&quot;font-size:3.5rem; color:rgba(255,255,255,0.6);&quot;></i>'">
+                    <div style="position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.25) 0%,transparent 65%);"></div>
+                </div>
+                <div class="fleet-info">
+                    <h3>Innova Crysta</h3>
+                    <p>The gold standard for long-distance luxury. Superior comfort and safety.</p>
+                    <div class="pricing-list">
+                        <div class="pricing-row"><span>Base Charge (One Way)</span><strong>₹22 / km</strong></div>
+                        <div class="pricing-row"><span>Round Trip Rate</span><strong>₹21 / km</strong></div>
+                        <div class="pricing-row"><span>One Way Minimum</span><strong>130 Km</strong></div>
+                        <div class="pricing-row"><span>Round Trip Minimum</span><strong>250 Km</strong></div>
+                        <div class="pricing-row"><span>Driver Allowance</span><strong>₹400</strong></div>
+                    </div>
+                    <div class="fleet-specs" style="margin-bottom:15px;">
+                        <span><i class="fa-solid fa-user"></i> 7 Seats</span>
+                        <span><i class="fa-solid fa-suitcase"></i> 4 Bags</span>
+                    </div>
+                    <div class="fleet-actions">
+                        <a href="#contact" onclick="document.getElementById('mb-car').value='MUV'; setTimeout(()=>{document.getElementById('contact').scrollIntoView({behavior:'smooth',block:'start'})},50); return true;" class="btn-primary full-width book-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Routes Section -->
+    <section id="routes" class="contact-section">
+        <div class="contact-container" style="display:block; max-width: 1200px; margin: 0 auto;">
+            <div class="routes-info reveal text-center">
+                <span class="breadcrumb" style="display:block; margin-bottom:1rem;">Our Reach</span>
+                <h2 style="font-size:3rem; margin-bottom:1rem; color:#1E1208;">Wherever the Road Leads, We Go</h2>
+                <p style="max-width:680px; margin: 0 auto 4rem; color:#7C5C35; font-size:1.05rem;">Five states. Hundreds of routes. One reliable partner. Mithra is your trusted companion for every outstation journey across South India.</p>
+
+                <div class="states-grid">
+                    <div class="state-card reveal">
+                        <i class="fa-solid fa-landmark state-icon"></i>
+                        <h3>Tamil Nadu</h3>
+                        <p>Home Ground</p>
+                    </div>
+                    <div class="state-card reveal delay-1">
+                        <i class="fa-solid fa-mountain-sun state-icon"></i>
+                        <h3>Kerala</h3>
+                        <p>God's Own Country</p>
+                    </div>
+                    <div class="state-card reveal delay-2">
+                        <i class="fa-solid fa-building-columns state-icon"></i>
+                        <h3>Karnataka</h3>
+                        <p>Tech &amp; Heritage</p>
+                    </div>
+                    <div class="state-card reveal delay-1">
+                        <i class="fa-solid fa-place-of-worship state-icon"></i>
+                        <h3>Andhra</h3>
+                        <p>Spiritual &amp; Coastal</p>
+                    </div>
+                    <div class="state-card reveal delay-2">
+                        <i class="fa-solid fa-city state-icon"></i>
+                        <h3>Telangana</h3>
+                        <p>City of Pearls</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Quote Banner -->
+    <section class="cta-premium-banner reveal">
+        <div class="cta-flex">
+            <div class="cta-text">
+                <h2 style="color:#fff !important;">Every Mile Matters to Us</h2>
+                <p style="color:rgba(255,255,255,0.72) !important;">Not just a taxi — a committed travel partner. We cover Tamil Nadu, Kerala, Karnataka, Andhra &amp; Telangana with punctuality, safety and honest pricing at every step.</p>
+            </div>
+            <div class="cta-button-side">
+                <a href="tel:+919442173548" class="btn-premium-cta">
+                    <i class="fa-solid fa-phone"></i>
+                    Speak to Us (+91 94421 73548)
+                </a>
+                <p style="margin-top:1.2rem; font-size:0.9rem; color:#F5C842; font-weight:700; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    <i class="fa-solid fa-bolt"></i> Instant Confirmations Available
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Cities -->
+    <section id="popular-cities" class="popular-cities-section">
+        <div class="section-header reveal">
+            <h2>Explore Popular Cities</h2>
+            <div class="header-line"></div>
+        </div>
+        
+        <div class="swiper citiesSwiper reveal">
+            <div class="swiper-wrapper" id="cities-swiper-wrapper">
+                <!-- Dynamically populated via JS -->
+            </div>
+            <!-- Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- Popular Routes -->
+    <section id="popular-routes" class="popular-routes-section">
+        <div class="section-header reveal">
+            <h2>Trending Travel Routes</h2>
+            <div class="header-line"></div>
+        </div>
+
+        <div class="swiper routesSwiper reveal">
+            <div class="swiper-wrapper" id="routes-swiper-wrapper">
+                <!-- Dynamically populated via JS -->
+            </div>
+            <!-- Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section id="services" class="services">
+        <div class="section-header reveal">
+            <h2>How We Serve You</h2>
+            <div class="header-line"></div>
+            <p>Tailored travel experiences — every route, every occasion</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="icon-box"><i class="fa-solid fa-car-on"></i></div>
+                <h3>Outstation Drops</h3>
+                <p>Door-to-door outstation travel with experienced, verified drivers. We handle the distance — you enjoy the ride.</p>
+            </div>
+            <div class="service-card reveal delay-1">
+                <div class="icon-box"><i class="fa-solid fa-route"></i></div>
+                <h3>One-Way Trips</h3>
+                <p>Pay only for where you're going. No return fare, no extra burden — just fair, transparent pricing for every km.</p>
+            </div>
+            <div class="service-card reveal delay-2">
+                <div class="icon-box"><i class="fa-solid fa-plane-departure"></i></div>
+                <h3>Airport Pickups &amp; Drops</h3>
+                <p>On-time airport transfers, 24/7. We track your flight and ensure you're never late for take-off or kept waiting on arrival.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparent Pricing -->
+    <section id="pricing" class="pricing-section">
+        <div class="section-header reveal">
+            <h2><i class="fa-solid fa-tags" style="color:#E8A020;"></i> No Surprises. Just Fair Rates.</h2>
+            <div class="header-line"></div>
+            <p>What you see is exactly what you pay — always.</p>
+        </div>
+        <div class="pricing-container reveal">
+            <div class="pricing-table-wrap">
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th colspan="3">Pricing at a Glance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Starting Rate</strong></td>
+                            <td><span class="price-chip">₹ 14 / km</span></td>
+                            <td class="price-desc">Per-km rate for Sedan (one-way). Applies to most standard routes with zero hidden charges.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>One-Way Journeys</strong></td>
+                            <td><span class="price-chip">Min. 130 km</span></td>
+                            <td class="price-desc">Pay only for the distance you travel. No return fare charged for one-way trips.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Round Trips</strong></td>
+                            <td><span class="price-chip">Min. 250 km/day</span></td>
+                            <td class="price-desc">Economical daily rates for multi-day round trip journeys across South India.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Custom Itinerary</strong></td>
+                            <td><span class="price-chip btn-support" style="cursor:pointer;"
+                                    onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request Quote</span></td>
+                            <td class="price-desc">Special tours, pilgrimages, multi-day packages — call us and we'll personalise your trip.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wide Service Coverage -->
+    <section id="coverage" class="wide-coverage-section reveal" style="margin-top:0;">
+        <div class="coverage-container">
+            <h2><i class="fa-solid fa-map-location-dot" style="color:#E8A020;"></i> Built for South India's Roads</h2>
+            <ul class="coverage-list">
+                <li><i class="fa-solid fa-circle-check"></i>
+                    <div><strong>Deep Tamil Nadu Coverage:</strong> All major cities, districts and tourist spots — Coimbatore, Madurai, Chennai, Ooty, Kodaikanal and beyond.</div>
+                </li>
+                <li><i class="fa-solid fa-circle-check"></i>
+                    <div><strong>Seamless Inter-State Travel:</strong> One-way, round trip, airport transfers and complete tour packages across Tamil Nadu, Kerala, Karnataka, Andhra and Telangana.</div>
+                </li>
+                <li><i class="fa-solid fa-circle-check"></i>
+                    <div><strong>100+ Active Routes:</strong> Frequently travelled outstation routes available with upfront pricing — no negotiation needed.</div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Journey Planner / Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+                    <div class="full-booking-form reveal delay-1">
+                        <div class="section-header">
+                            <h2>Plan Your Journey</h2>
+                            <div class="header-line"></div>
+                            <p>Enter your trip details and get an instant fare estimate — then confirm via WhatsApp in one tap.</p>
+                        </div>
+
+                        <form id="main-booking-form" class="modern-form">
+                             <!-- Trip Type Toggle -->
+                             <div style="margin-bottom:1.5rem; display:flex; justify-content:center;">
+                                 <div class="trip-toggle">
+                                     <input type="radio" name="mb-trip-type" id="mb-one-way" value="One Way" checked>
+                                     <label for="mb-one-way">One Way</label>
+                                     <input type="radio" name="mb-trip-type" id="mb-round-trip" value="Round Trip">
+                                     <label for="mb-round-trip">Round Trip</label>
+                                 </div>
+                             </div>
+
+                             <!-- Hidden elements for JS compatibility -->
+                             <div style="display:none;">
+                                 <select id="mb-days-hidden-legacy"></select>
+                             </div>
+
+                            <div class="form-row-modern">
+                                <div class="form-group-modern">
+                                    <label class="form-label-top">Full Name</label>
+                                    <input type="text" id="mb-name" placeholder="John Doe" required>
+                                </div>
+                                <div class="form-group-modern">
+                                    <label class="form-label-top">Phone</label>
+                                    <input type="tel" id="mb-phone" placeholder="Your Phone Number" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row-modern">
+                                <div class="form-group-modern">
+                                    <label class="form-label-top">Pickup City</label>
+                                    <div style="position:relative;">
+                                        <input type="text" id="mb-pickup" placeholder="E.g., Coimbatore" list="city-list" autocomplete="off" required style="padding-right:2rem;">
+                                        <i class="fa-solid fa-xmark" id="mb-clear-pickup" style="position:absolute;right:0.8rem;top:50%;transform:translateY(-50%);color:#9CA3AF;cursor:pointer;font-size:0.85rem;transition:color 0.2s;" onmouseover="this.style.color='#111827'" onmouseout="this.style.color='#9CA3AF'" title="Clear"></i>
+                                    </div>
+                                </div>
+                                <div style="display:flex;justify-content:center;align-items:center;padding:1.5rem 0.5rem 0 0.5rem;">
+                                    <i class="fa-solid fa-right-left" id="mb-swap-btn" style="color:#D1D5DB;font-size:1.1rem;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.color='#FFC107';this.style.transform='scale(1.15)'" onmouseout="this.style.color='#D1D5DB';this.style.transform='scale(1)'" title="Swap Locations"></i>
+                                </div>
+                                <div class="form-group-modern">
+                                    <label class="form-label-top">Drop City / Tour Place</label>
+                                    <div style="position:relative;">
+                                        <input type="text" id="mb-drop" placeholder="E.g., Bangalore" list="city-list" autocomplete="off" required style="padding-right:2rem;">
+                                        <i class="fa-solid fa-xmark" id="mb-clear-drop" style="position:absolute;right:0.8rem;top:50%;transform:translateY(-50%);color:#9CA3AF;cursor:pointer;font-size:0.85rem;transition:color 0.2s;" onmouseover="this.style.color='#111827'" onmouseout="this.style.color='#9CA3AF'" title="Clear"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row-modern">
+                                <div class="form-group-modern">
+                                    <label class="form-label-top">Travel Start Date</label>
+                                    <input type="date" id="mb-date" required>
+                                </div>
+                                <div class="form-group-modern" id="mb-days-group" style="display:none; position:relative;">
+                                    <label class="form-label-top">No. of Days</label>
+                                    <input type="number" id="mb-days" min="1" max="30" value="1" placeholder="Number of days" style="padding-right:3rem;" required>
+                                    <span style="position:absolute;right:0.9rem;bottom:0.75rem;font-size:0.75rem;color:#92400E;pointer-events:none;font-weight:600;">days</span>
+                                </div>
+                                <div class="form-group-modern">
+                                    <label class="form-label-top">Pickup Time</label>
+                                    <input type="time" id="mb-time" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row-modern">
+                                <div class="form-group-modern">
+                                    <label class="form-label-top">Vehicle Type</label>
+                                    <select id="mb-car" required style="width:100%;">
+                                        <option value="Sedan" selected>Sedan</option>
+                                        <option value="SUV">SUV</option>
+                                        <option value="MUV">Innova Crysta</option>
+                                    </select>
+                                </div>
+                                <div class="form-group-modern">
+                                    <label class="form-label-top">Adults</label>
+                                    <select id="mb-adults" required style="width:100%;"></select>
+                                </div>
+                                <div class="form-group-modern">
+                                    <label class="form-label-top">Children</label>
+                                    <select id="mb-children" required style="width:100%;"></select>
+                                </div>
+                                <div class="form-group-modern">
+                                    <label class="form-label-top">Luggage</label>
+                                    <select id="mb-luggage" required style="width:100%;"></select>
+                                </div>
+                            </div>
+
+
+
+                            <div id="mb-error" style="color:#DC2626; font-size:0.9rem; margin-bottom:1rem; text-align:center; display:none;"></div>
+
+                            <div style="text-align: center;">
+                                <button type="button" id="mb-btn-estimate" class="btn-primary full-width">
+                                    Get Estimate <i class="fa-solid fa-calculator"></i>
+                                </button>
+                            </div>
+
+
+                        </form>
+                    </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="feedback" class="feedback-section">
+        <div class="section-header reveal">
+            <h2>Voices from Our Travellers</h2>
+            <div class="header-line"></div>
+            <p>Real experiences, real people — see why they choose Mithra</p>
+        </div>
+        <div class="feedback-container">
+            <!-- Submission Form -->
+            <div class="feedback-form-card reveal">
+                <h3>Leave a Review</h3>
+                <form id="feedback-form" class="modern-feedback-form">
+                    <div class="form-group-modern" style="margin-bottom: 1.5rem;">
+                        <label class="form-label-top">Full Name</label>
+                        <input type="text" id="fb-name" placeholder="E.g. Ramesh Kumar" required>
+                    </div>
+                    <div class="form-group-modern" style="margin-bottom: 1.5rem;">
+                        <label class="form-label-top">Rating</label>
+                        <select id="fb-rating" style="width: 100%;" required>
+                            <option value="5">⭐⭐⭐⭐⭐ (5/5 Excellence)</option>
+                            <option value="4">⭐⭐⭐⭐ (4/5 Very Good)</option>
+                            <option value="3">⭐⭐⭐ (3/5 Good)</option>
+                            <option value="2">⭐⭐ (2/5 Average)</option>
+                            <option value="1">⭐ (1/5 Poor)</option>
+                        </select>
+                    </div>
+                    <div class="form-group-modern" style="margin-bottom: 2rem;">
+                        <label class="form-label-top">Share Your Experience</label>
+                        <textarea id="fb-message" placeholder="Tell us about your Mithra journey..." required></textarea>
+                    </div>
+                    <button type="submit" id="fb-btn-submit" class="btn-primary w-100">
+                        Post My Review <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Display Feedbacks -->
+            <div class="feedback-list reveal delay-1" id="feedbacks-container">
+                <div class="text-center" style="padding: 2rem; color: var(--kps-text-muted);">
+                    <i class="fa-solid fa-spinner fa-spin"></i> Loading reviews...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel CTA -->
+    <section class="cta-premium-banner reveal">
+        <div class="cta-flex">
+            <div class="cta-text">
+                <h2 style="color:#fff !important;">Your Next Journey Starts Here</h2>
+                <p style="color:rgba(255,255,255,0.72) !important;">Stress-free, transparent and comfortable — Mithra Tours &amp; Travels is ready when you are. Book now and experience the difference.</p>
+            </div>
+            <div class="cta-button-side">
+                <a href="#home" class="btn-premium-cta">
+                    Plan My Trip <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="tel:+919442173548" class="btn-premium-cta secondary-cta">
+                    <i class="fa-solid fa-phone"></i> +91 94421 73548
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="modern-footer">
+        <div class="footer-container">
+            <div class="footer-section brand-section">
+                <div class="footer-logo-text">
+                    <span class="footer-logo-main">MTT</span>
+                    <span class="footer-logo-sub">Tours & Travels</span>
+                </div>
+                <p>Premium Door-to-Door Outstation Travel Services</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section links-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="our-fleet.html">Our Fleet</a></li>
+                    <li><a href="routes.html">Routes We Cover</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact-section-footer">
+                <h3>Contact Us</h3>
+                <div class="footer-contact-item">
+                    <div class="fc-text">
+                        <p>Coimbatore, Tamil Nadu, India.</p>
+                    </div>
+                </div>
+                <div class="footer-contact-item">
+                    <div class="fc-text">
+                        <p><a href="tel:+919442173548">+91 94421 73548</a></p>
+                        <p><a href="mailto:mithratoursandtravels26@gmail.com">mithratoursandtravels26@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 All Rights Reserved By MTT Tours & Travels</p>
+        </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-widgets">
+        <a href="tel:+919442173548" class="fab phone-fab" aria-label="Call Us">
+            <i class="fa-solid fa-phone"></i>
+            <span class="fab-tooltip">Call Now</span>
+        </a>
+        <a href="https://wa.me/919442173548" target="_blank" class="fab whatsapp-fab" aria-label="WhatsApp Us">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span class="fab-tooltip">WhatsApp</span>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- City List Data -->
+    <script src="js/cities.js?v=4"></script>
+
+    <!-- Firebase SDK / Main JS -->
+    <script type="module" src="js/main.js?v=22"></script>
+    <script>
+        document.querySelectorAll('input[name="mb-trip-type"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const isRound = e.target.value === 'Round Trip';
+                const daysGroup = document.getElementById('mb-days-group');
+                if (daysGroup) daysGroup.style.display = isRound ? 'flex' : 'none';
+            });
+        });
+    </script>
+    <script src="js/booking.js?v=32"></script>
+</body>
+
+</html>

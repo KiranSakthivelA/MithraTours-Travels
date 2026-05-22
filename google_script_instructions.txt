@@ -1,0 +1,114 @@
+# Google Sheets Integration Guide - KPS Travels
+# DOMAIN RESTRICTED: Only accepts requests with the correct secret token.
+# This script will ONLY process data from your website (kpstravelscbe.com).
+
+=========================================================
+STEP 1: Clear the old spreadsheet data
+=========================================================
+1. Open your Google Sheet.
+2. Select all rows BELOW the header row (row 2 onwards).
+3. Right-click → Delete rows.
+4. The sheet should now only have the header row remaining.
+   IDs will restart from 1 with the next new inquiry.
+
+=========================================================
+STEP 2: Ensure header row is correct (Row 1)
+=========================================================
+Make sure Row 1 has these exact headers (A1 to J1):
+  ID | Name | Phone | Pickup | Drop | Car Type | Travel Date | Message | Status | Submitted At
+
+=========================================================
+STEP 3: Replace the Google Apps Script code
+=========================================================
+1. In your Google Sheet, click "Extensions" → "Apps Script".
+2. Delete ALL existing code in the editor.
+3. Paste the following NEW code:
+
+```javascript
+// KPS Travels - Google Sheets Integration
+// DOMAIN RESTRICTED: Only processes requests from kpstravelscbe.com
+// Secret token: KPS_SECURE_AUTH_8842
+
+const SECRET_TOKEN = "KPS_SECURE_AUTH_8842";
+
+function doPost(e) {
+  try {
+    const data = JSON.parse(e.postData.contents);
+
+    // --- Security: Validate secret token ---
+    if (!data.secret_token || data.secret_token !== SECRET_TOKEN) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ status: "error", message: "Unauthorized" }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    const action = data.action || "new_inquiry";
+
+    if (action === "new_inquiry") {
+      // Append a new row with all inquiry details
+      sheet.appendRow([
+        data.id          || '',
+        data.name        || '',
+        data.phone       || '',
+        data.pickup      || '',
+        data.drop        || '',
+        data.car         || '',
+        data.date        || 'Not Specified',
+        data.message     || '',
+        data.status      || 'New',
+        new Date()          // Submitted At timestamp
+      ]);
+
+    } else if (action === "update_status") {
+      // Find the row with matching ID and update status & price
+      const lastRow = sheet.getLastRow();
+      for (let i = 2; i <= lastRow; i++) {
+        const rowId = sheet.getRange(i, 1).getValue();
+        if (String(rowId) === String(data.id)) {
+          sheet.getRange(i, 9).setValue(data.status || '');  // Column I = Status
+          if (data.price) {
+            // If a Price column (K) exists, update it too
+            sheet.getRange(i, 11).setValue(data.price);
+          }
+          break;
+        }
+      }
+    }
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: "success", action: action }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (error) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: "error", message: error.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+// Test function - run manually from Apps Script to verify setup
+function testSetup() {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  Logger.log("Sheet name: " + sheet.getName());
+  Logger.log("Last row: " + sheet.getLastRow());
+  Logger.log("Setup OK - ready to receive inquiries from kpstravelscbe.com");
+}
+```
+
+=========================================================
+STEP 4: Redeploy the Web App
+=========================================================
+1. Click "Deploy" → "Manage deployments".
+2. Click the pencil (edit) icon on the existing deployment.
+3. Change "Version" to "New version".
+4. Click "Deploy".
+5. Copy the Web App URL (it stays the same).
+6. The URL in api/config.php is already correct — no change needed.
+
+=========================================================
+NOTES
+=========================================================
+- The script now checks the secret token "KPS_SECURE_AUTH_8842" on every request.
+- Any request without the token (from other websites or tools) will be rejected.
+- Columns: A=ID, B=Name, C=Phone, D=Pickup, E=Drop, F=Car, G=Date, H=Message, I=Status, J=Submitted At
