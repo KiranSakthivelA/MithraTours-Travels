@@ -201,22 +201,21 @@ h1, h2, h3, h4 { font-weight: 700; color: var(--mtt-text-main); }
 
 /* Quick Estimate Form */
 .hero-form {
-    background: rgba(255,252,242,0.08);
-    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(245,200,66,0.20);
-    padding: 1.8rem 2rem; border-radius: 22px;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.30),
-                0 0 0 1px rgba(245,200,66,0.08) inset;
+    background: #ffffff;
+    border: none;
+    padding: 2.2rem 2.2rem; border-radius: 24px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.35);
 }
 .hero-form h3 {
-    color: #fff; margin-bottom: 1.1rem;
-    font-size: 1.2rem; font-weight: 700;
+    color: #1E1208; margin-bottom: 1.2rem;
+    font-size: 1.3rem; font-weight: 800;
     display: flex; align-items: center; gap: 0.5rem;
 }
+.hero-form .highlight-alt { color: var(--mtt-amber); }
 .qb-label {
-    display: block; font-size: 0.73rem; font-weight: 700;
-    color: rgba(255,252,242,0.72); text-transform: uppercase;
-    letter-spacing: 0.8px; margin-bottom: 0.3rem; text-align: left;
+    display: block; font-size: 0.73rem; font-weight: 800;
+    color: #7C5C35; text-transform: uppercase;
+    letter-spacing: 0.8px; margin-bottom: 0.4rem; text-align: left;
 }
 
 /* ── Forms ────────────────────────────────────────────────── */
@@ -261,21 +260,21 @@ input:focus, select:focus, textarea:focus {
 
 /* Trip Toggle */
 .trip-toggle {
-    display: inline-flex; background: rgba(255,252,242,0.10);
-    border-radius: 50px; padding: 3px;
-    border: 1px solid rgba(245,200,66,0.25);
+    display: inline-flex; background: #FFF8E8;
+    border-radius: 50px; padding: 4px;
+    border: 1px solid rgba(196,123,15,0.18);
 }
 .trip-toggle input[type="radio"] { display: none; }
 .trip-toggle label {
-    padding: 0.48rem 1.4rem; border-radius: 50px;
-    font-size: 0.88rem; font-weight: 600;
-    color: rgba(255,252,242,0.68); cursor: pointer;
-    transition: all 0.22s ease; width: auto;
+    padding: 0.5rem 1.6rem; border-radius: 50px;
+    font-size: 0.9rem; font-weight: 600;
+    color: #A8690A; cursor: pointer;
+    transition: all 0.25s ease; width: auto;
 }
 .trip-toggle input[type="radio"]:checked + label {
     background: linear-gradient(135deg, #C47B0F, #E8A020);
     color: #1E1208; font-weight: 800;
-    box-shadow: 0 2px 10px rgba(196,123,15,0.30);
+    box-shadow: 0 4px 12px rgba(196,123,15,0.25);
 }
 /* Light bg toggle (contact form) */
 .contact-section .trip-toggle,
